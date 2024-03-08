@@ -10,6 +10,7 @@
     "start": "npm run build:client && npm run copy:images && npm run build:server && nodemon ./build/server.js"
   },
   "dependencies": {
+    "esbuild": "^0.20.1",
     "@reduxjs/toolkit": "^2.2.1",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",
@@ -20,7 +21,6 @@
   "devDependencies": {
     "copyfiles": "^2.4.1",
     "css-tree": "^2.3.1",
-    "esbuild": "^0.20.1",
     "esbuild-plugin-css-modules": "^0.3.0",
     "esbuild-sass-plugin": "^3.1.0",
     "import-meta-resolve": "^4.0.0",
