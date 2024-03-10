@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { addItem } from '../store/slices/cartSlice';
 
 
-const ProductsCard = (props) => {
+const ProductCard = (props) => {
 
-    const { img, rating, title, price } = props;
+    const { image, rating, title, price } = props;
 
     const [isAdded, setIsAdded] = useState(false);
 
@@ -14,9 +14,7 @@ const ProductsCard = (props) => {
 
 
     const handleAddToCart = () => {
-
-        // here, we cannot directly pass the `props` as it is, if we need to access the same value within the child component. So, we've to pass it as a different prop like this- `{...props}`
-        const item = { ...props };
+        const item = { ...props, quantity: 1 };
         dispatch(addItem(item));
 
         setIsAdded(true);
@@ -31,7 +29,7 @@ const ProductsCard = (props) => {
         <>
             <div className="product_card">
                 <figure>
-                    <img src={img} alt="item-img" />
+                    <img src={image} alt="product-image" />
                 </figure>
                 <strong className="rating">{rating}</strong>
                 <h4 className="title">{title}</h4>
@@ -48,4 +46,4 @@ const ProductsCard = (props) => {
     );
 };
 
-export default ProductsCard;
+export default ProductCard;

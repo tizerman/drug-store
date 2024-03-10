@@ -1,21 +1,26 @@
-import path from "path";
-import fs from "fs";
+import path from 'path'
+import fs from 'fs'
 
-import React from "react";
-import ReactDOMServer from "react-dom/server";
-import express from "express";
-import dotenv from 'dotenv';
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import express from 'express'
+import dotenv from 'dotenv'
+import db from './db.js'
+import cors from 'cors'
+import App from '../src/App.jsx'
+import router from './routes/index.js'
 
-import App from "../src/App";
+const app = express()
+dotenv.config()
 
-const app = express();
-dotenv.config();
+const PORT = process.env.PORT || 3000
 
-const PORT = process.env.PORT || 3000;
-const MONGO_URL = process.env.MONGO_URL;
+app.use(cors())
+app.use(express.json())
+app.use(express.static(path.join(__dirname,'..','dist')))
+app.use('/api', router)
 
-app.use(express.static(path.join(__dirname,'..','dist')));
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
   fs.readFile(path.resolve("./public/index.html"), "utf8", (err, data) => {
     if (err) {
       console.error(err);
@@ -27,10 +32,18 @@ app.get("/", (req, res) => {
         '<div id="root"></div>',
         `<div id="root">${ReactDOMServer.renderToString(<App />)}</div>`
       )
-    );
-  });
-});
+    )
+  })
+})
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+const start = async () => {
+    try {
+        await db.authenticate()
+        await db.sync()
+        app.listen(PORT, () => console.log('Server listening on port ' + PORT))
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+start()
