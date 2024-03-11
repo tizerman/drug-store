@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const Modal = ({ isOpen, onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -8,15 +8,15 @@ const Modal = ({ isOpen, onSubmit }) => {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
-  };
+  }
 
-  if (!isOpen) return null;
+  if (!isOpen) return null
 
   return (
     <div className="modal">
@@ -31,4 +31,4 @@ const Modal = ({ isOpen, onSubmit }) => {
   );
 };
 
-export default Modal;
+export default Modal

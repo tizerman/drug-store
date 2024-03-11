@@ -1,7 +1,5 @@
-import db from "./db.js"
-import { DataTypes } from "sequelize"
-// import { v4 as uuidv4 } from 'uuid';
-
+import db from './db.js'
+import { DataTypes } from 'sequelize'
 
 const Product = db.define('products', {
       id: {type: DataTypes.INTEGER, primaryKey: true}, 

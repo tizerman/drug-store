@@ -1,4 +1,4 @@
-import Models from "../models.js"
+import Models from '../models.js'
 
 class OrderController {
 
@@ -11,15 +11,14 @@ class OrderController {
     const { id } = req.params;
     const order = await Models.Order.findByPk(id, { 
       include: Models.OrderItem 
-    });
+    })
     
-    res.json(order);
+    res.json(order)
   }
 
   async create(req, res, next) {
-    const { email, phone, address, orderItems } = req.body;
-    
-    const order = await Models.Order.create({ email, phone, address });
+    const { email, phone, address, orderItems } = req.body
+    const order = await Models.Order.create({ email, phone, address })
 
     for (let item of orderItems) {
       await Models.OrderItem.create({
@@ -27,12 +26,12 @@ class OrderController {
         productId: item.id,
         quantity: item.quantity,
         price: item.price,
-      });
+      })
     }   
 
-    const result = await Models.Order.findByPk(order.id, { include: Models.OrderItem });
+    const result = await Models.Order.findByPk(order.id, { include: Models.OrderItem })
     
-    res.json(result);
+    res.json(result)
   }
 }
 

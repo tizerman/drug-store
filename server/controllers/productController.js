@@ -1,4 +1,4 @@
-import Models from "../models.js"
+import Models from '../models.js'
 
 class ProductController {
 
@@ -8,11 +8,10 @@ class ProductController {
   }
 
   async findById(req, res, next) {
-    const { id } = req.params;
-    const product = await Models.Product.findByPk(id);
-    res.json(product);
+    const { id } = req.params
+    const product = await Models.Product.findByPk(id)
+    res.json(product)
   }
-
 }
 
 export default new ProductController()

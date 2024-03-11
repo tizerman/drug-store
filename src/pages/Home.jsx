@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import axios from 'axios'
 
 const Home = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios('api/product');
-      setData(result.data);
+      const result = await axios('api/product')
+      setData(result.data)
     };
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <>
@@ -26,7 +26,7 @@ const Home = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
 export default Home

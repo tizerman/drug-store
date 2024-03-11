@@ -7,44 +7,43 @@ import Modal from './Modal'
 const Cart = () => {
   const { isCartOpen, cartItems } = useSelector((state) => state.cart)
   const dispatch = useDispatch()
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };  
+    setIsModalOpen(false)
+  }
 
   const handleSubmit = (formData) => {
-    handleCheckout(formData);
-    setIsModalOpen(false);
-  };
+    handleCheckout(formData)
+    setIsModalOpen(false)
+  }
 
   const handleCloseCart = (close) => {
       dispatch(toggleCart(close))
-  };
+  }
 
   const handleRemove = (itemId) => {
       dispatch(removeItem(itemId))
-  };
+  }
 
   const handleIncrement = (itemId) => {
       dispatch(incrementItem(itemId))
-  };
+  }
 
   const handleDecrement = (itemId) => {
       dispatch(decrementItem(itemId))
-  };
+  }
 
   const handleCheckout = async (formData) => {
     try {
       const response = await axios.post('/api/order', {
         ...formData,
         orderItems: cartItems,
-      });
+      })
 
       if (response.status === 200) {
         alert('Order has been placed successfully!')
@@ -55,7 +54,7 @@ const Cart = () => {
     } catch (error) {
       console.error('There was an error placing your order:', error)
     }
-  };
+  }
 
   useEffect(() => {
     const docBody = document.body;
@@ -167,4 +166,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Cart

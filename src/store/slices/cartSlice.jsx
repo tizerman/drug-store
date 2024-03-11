@@ -35,7 +35,7 @@ const cartSlice = createSlice({
             item.quantity++
         }
         return item
-      });
+      })
     },
 
     decrementItem(state, action) {

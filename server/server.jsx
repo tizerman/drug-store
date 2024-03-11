@@ -37,13 +37,13 @@ app.get('/', (req, res) => {
 })
 
 const start = async () => {
-    try {
-        await db.authenticate()
-        await db.sync()
-        app.listen(PORT, () => console.log('Server listening on port ' + PORT))
-    } catch (error) {
-        console.log(error)
-    }
+  try {
+    await db.authenticate()
+    await db.sync()
+    app.listen(PORT, () => console.log('Server listening on port ' + PORT))
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 start()

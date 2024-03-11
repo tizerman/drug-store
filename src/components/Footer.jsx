@@ -1,33 +1,33 @@
-import React from 'react';
+import React from 'react'
 
 const Footer = () => {
-    return (
-        <>
-            <footer id="footer">
-                <div className="container">
-                    <a
-                        href="https://github.com/yevtok"
-                        className="repo_link"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        GITHUB
-                    </a>
+  return (
+    <>
+      <footer id="footer">
+        <div className="container">
+          <a
+            href="https://github.com/yevtok"
+            className="repo_link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GITHUB
+          </a>
 
-                    <p>
-                        All rights reserved &nbsp;
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            ©
-                        </a>
-                    </p>
-                </div>
-            </footer>
-        </>
-    );
+          <p>
+            All rights reserved &nbsp;
+            <a
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ©
+            </a>
+        </p>
+        </div>
+      </footer>
+    </>
+  );
 };
 
-export default Footer;
+export default Footer
